@@ -25,7 +25,7 @@ class MetaReflexion():
             options = options,
             format = 'json'
         )
-        return output['response']
+        return output
 
 
     def actor(self, task):
