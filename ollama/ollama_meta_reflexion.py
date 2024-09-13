@@ -81,14 +81,14 @@ class MetaReflexion():
             a = i["winner"]
             b = i[a]
             if b in judgements:
-                k = judgements.index(b)
+                k = judgements.index(b) + 1
                 winner_dict[k] = winner_dict[k]+1
 
         return winner_dict
 
     def best_judgement_index(self, winner_dict):
         most_wins = max(winner_dict.values())
-        best_judgement_index = [key for key in winner_dict if winner_dict[key] == most_wins]
+        best_judgement_index = [key-1 for key in winner_dict if winner_dict[key] == most_wins]
         return best_judgement_index
 
 
