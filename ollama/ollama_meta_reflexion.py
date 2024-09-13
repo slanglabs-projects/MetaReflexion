@@ -80,8 +80,8 @@ class MetaReflexion():
         for i in meta_judgements:
             a = i["winner"]
             b = i[a]
-            if a in judgements:
-                k = judgements.index(a)
+            if b in judgements:
+                k = judgements.index(b)
                 winner_dict[k] = winner_dict[k]+1
 
         return winner_dict
