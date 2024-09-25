@@ -1,16 +1,28 @@
 import torch
 from transformers import pipeline
-from . import MODEL_PATH
-#please do "hugging-face cli login" on your command prompt before you run this file this makes sure that you will access all repos even gated ones if you have permissions without any issue.
+from huggingface import MODEL_PATH
 
-pipe = pipeline(
-    "text-generation",
-    model=MODEL_PATH,
-    model_kwargs={"torch_dtype: torch.bfloat16"},
-    device = "cuda"
-)
+# Please do "hugging-face cli login" on your command prompt before running this file.
 
-terminators = [
-    pipe.tokenizer.eos_token_id,
-    pipe.tokenizer.convert_tokens_to_ids("<|eot_id|>")
-]
+def download_model():
+    pipe = pipeline(
+        "text-generation",
+        model=MODEL_PATH,
+        model_kwargs={"torch_dtype": torch.bfloat16},
+        device="cuda"
+    )
+
+    terminators = [
+        pipe.tokenizer.eos_token_id,
+        pipe.tokenizer.convert_tokens_to_ids("<|eot_id|>")
+    ]
+
+    # Output as JSON
+    output = {
+        "pipe": pipe,
+        "terminators": terminators
+    }
+    return output 
+
+if __name__ == "__main__":
+    download_model()

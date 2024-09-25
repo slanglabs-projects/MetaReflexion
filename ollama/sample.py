@@ -1,6 +1,5 @@
-from . import SYS_PROMPT, JUDGE_PROMPT, METAJUDGE_PROMPT, IMPROVE_PROMPT, MODEL_NAME
+from ollama import SYS_PROMPT, JUDGE_PROMPT, METAJUDGE_PROMPT, IMPROVE_PROMPT, MODEL_NAME
 from ollama_meta_reflexion import MetaReflexion
-from . import MODEL_NAME
 
 metareflexion_instance = MetaReflexion(
     model_name=MODEL_NAME, 

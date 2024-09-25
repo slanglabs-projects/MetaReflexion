@@ -1,6 +1,5 @@
 import json
 import numpy as np
-import downloadmodel
 
 class MetaReflexion():
     def __init__ (self,model,judge_prompt, metajudge_prompt, improve_prompt, sys_prompt = None):
@@ -12,7 +11,7 @@ class MetaReflexion():
             "max_new_tokens" : 256,
             "do_sample": True,
             "temperature" : 0.7,
-            "eos_token_id": downloadmodel.terminators
+            "eos_token_id": None
         }
         self.judge_sys_prompt = judge_prompt
         self.sys_prompt = sys_prompt
@@ -43,7 +42,7 @@ class MetaReflexion():
             "max_new_tokens" :256,
             "temparature" : 0.7,
             "top_p":0.95,
-            "eos_token_id" : downloadmodel.terminators
+            "eos_token_id": self.generational_args["eos_token_id"]
 
         }
         messages = [
@@ -175,4 +174,3 @@ class MetaReflexion():
 
             elif(variance <2.5 and mean >= 3.5):
                 return output
-
